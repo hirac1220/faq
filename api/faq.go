@@ -229,7 +229,6 @@ func SearchFAQ(ctx context.Context, faq FAQ) (*FAQ, error) {
 			// cmd = "SELECT qtype, answer FROM faq;"
 			// rows, err := db.Query(cmd)
 			rows, err := db.Query(cmd, n)
-			log.Println("test %s", n)
 			if rows == nil {
 				return nil, nil
 			}
