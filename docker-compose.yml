@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    command: npm run dev
+    ports:
+      - "8000:3000"
+    volumes:
+      - "./web:/app"
+    tty: true
+
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    ports:
+      - "18080:8080"
+    volumes:
+      - "./api:/go/src/app"
+    environment:
+      ENV: "local"
+      DATABASE_URL: "faq.db"
+    tty: true

@@ -1,0 +1,13 @@
+runtime: go113
+service: api
+
+manual_scaling:
+  instances: 1
+
+handlers:
+  - url: /.*
+    script: auto
+
+env_variables:
+  ENV: "gcp"
+  DATABASE_URL: "root:root@unix(/cloudsql/{PROJECT_ID}:asia-northeast1:faq)/faq"
